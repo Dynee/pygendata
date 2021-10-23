@@ -1,7 +1,7 @@
-pydatagen/__pycache__
+pygendata/__pycache__
 tests/__pycache__
 .pytest_cache
-pydatagen/templates/__pycache__
-pydatagen/cli/__pycache__
+pygendata/templates/__pycache__
+pygendata/cli/__pycache__
 dist/*
-pydatagen.egg-info
+pygendata.egg-info

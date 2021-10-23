@@ -1,11 +1,11 @@
 run:
-	python3 pydatagen.py --generate csv --base ddl tests/users.txt --to tests/users.csv --rows 100
+	python3 pygendata.py --generate csv --base ddl tests/users.txt --to tests/users.csv --rows 100
 
 setup: requirements.txt
 	pip install -r requirements.txt
 
 clean:
-	rm -rf pydatagen/__pycache__
+	rm -rf pygendata/__pycache__
 
 test:
 	pytest

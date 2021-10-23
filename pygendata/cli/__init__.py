@@ -1,15 +1,15 @@
 import argparse
 import os
-from pydatagen import DataGenerator
+from pygendata import DataGenerator
 
-parser = argparse.ArgumentParser(prog='pydatagen', description='Python data generation library')
+parser = argparse.ArgumentParser(prog='pygendata', description='Python data generation library')
 
 # Arguments
 # generate: (csv, tsv, json)
 # from: (ddl, tsv, json) <filepath>
 # --rows (optional, default 100)
 # to: (filepath to place results)
-# pydatagen --generate csv --base ddl /path/to/ddl --to /out/users.csv --rows 1000
+# pygendata --generate csv --base ddl /path/to/ddl --to /out/users.csv --rows 1000
 
 parser.add_argument('--generate', type=str, help='The type of file to generate, options are csv, tsv, json')
 parser.add_argument('--base', nargs=2, type=str, help='The type of file to generate data from, optons (ddl, json, tsv, csv) and the filepath where this file is located')

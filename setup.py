@@ -1,15 +1,15 @@
 from distutils.core import setup
 
 setup(
-    name = 'pydatagen',
-    packages = ['pydatagen'],
+    name = 'pygendata',
+    packages = ['pygendata'],
     version = '0.0.1',
     license = 'MIT',
     description = 'data generation library supports multiple input/output file types',
     author = 'Lucas Padden',
     author_email='lucaspadden@gmail.com',
-    url = 'https://github.com/Dynee/pydatagen',
-    download_url = 'https://github.com/Dynee/pydatagen/archive/refs/tags/v0.0.1.tar.gz',
+    url = 'https://github.com/Dynee/pygendata',
+    download_url = 'https://github.com/Dynee/pygendata/archive/refs/tags/v0.0.1.tar.gz',
     keywords=['python', 'data generation'],
     install_requires=[
         'faker'
