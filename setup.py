@@ -3,7 +3,7 @@ from distutils.core import setup
 setup(
     name = 'pygendata',
     packages = ['pygendata'],
-    version = '0.0.1',
+    version = '0.1.0',
     license = 'MIT',
     description = 'data generation library supports multiple input/output file types',
     author = 'Lucas Padden',
