@@ -1,5 +1,6 @@
 import logging
 
+from tqdm import tqdm
 from pygendata.ddl import DDL
 from pygendata.managers import csvmanager, tsvmanager, jsonmanager
 
@@ -30,8 +31,8 @@ class DataGenerator:
             ddl.get_columns()
             ddl.create_headers()
             self.manager.headers = ddl.headers
-            for _ in range(self.rows):
-                ddl.create_row()
+            for i in tqdm(range(self.rows)):
+                ddl.create_row(i)
             self.manager.rows = ddl.column_data
             self.manager.write(outfile)
         except IOError as e:

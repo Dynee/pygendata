@@ -1,5 +1,7 @@
-from pygendata.datatypes import datatypes
+from pygendata.datatypes import datatypes, special_types
 from pygendata.exceptions import TypeNotSupportedError
+
+import re
 
 class DDL:
     def __init__(self, statement):
@@ -28,13 +30,23 @@ class DDL:
             name, *_ = column.split(' ')
             self.headers.append(name)
 
-    def create_row(self):
+    def create_row(self, current_row):
         c = {}
         for column in self.columns:
             name, *type_info = column.split(' ')
             type_info = ''.join(type_info)
             if type_info in datatypes:
-                c[name] = datatypes[type_info]
+                # is name special?
+                patterns = re.compile(r'(email)|(name)', re.IGNORECASE)
+                matches = patterns.match(name)
+                id_pattern = re.compile(r'(id)', re.IGNORECASE)
+                id_matches = id_pattern.match(name)
+                if matches:
+                    c[name] = special_types[name.upper()]()
+                elif id_matches:
+                    c[name] = current_row
+                else:
+                    c[name] = datatypes[type_info]() # expensive
             else:
                 raise TypeNotSupportedError(f"{c['type']} is not currently supported")
         self.column_data.append(c)
