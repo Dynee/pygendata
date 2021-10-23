@@ -9,10 +9,10 @@ class DataGenerator:
     DataGenerator takes an optional argument for number of rows to generate when dealing with csv
     """
     def __init__(self, manager, **kwargs):
+        if kwargs['rows']:
+                self.rows = kwargs['rows']
         if manager == 'csv':
             self.manager = csvmanager.CSVManager()
-            if kwargs['rows']:
-                self.rows = kwargs['rows']
         elif manager == 'tsv':
             self.manager = tsvmanager.TSVManager()
         elif manager == 'json':
@@ -34,8 +34,3 @@ class DataGenerator:
             self.manager.write(outfile)
         except IOError as e:
             logging.warn(str(e))
-        
-
-
-dg = DataGenerator('csv', rows=10)
-dg.ddl('../../tests/user.txt', '../../tests/users.csv')
