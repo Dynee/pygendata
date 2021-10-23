@@ -6,6 +6,7 @@ setup: requirements.txt
 
 clean:
 	rm -rf pygendata/__pycache__
+	rm -rf dist/*
 
 test:
 	pytest
