@@ -1,0 +1,6 @@
+create table user (
+id INTEGER,
+name TEXT ENCODING DICT(32),
+email TEXT ENCODING DICT(32),
+password TEXT ENCODING DICT(32)
+);
