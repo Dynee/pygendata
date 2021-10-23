@@ -1,5 +1,5 @@
-from datatypes import datatypes
-from exceptions import TypeNotSupportedError
+from .datatypes import datatypes
+from .exceptions import TypeNotSupportedError
 
 class DDL:
     def __init__(self, statement):

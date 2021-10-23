@@ -1,7 +1,7 @@
 import logging
 
-from ddl import DDL
-from managers import csvmanager, tsvmanager, jsonmanager
+from .ddl import DDL
+from .managers import csvmanager, tsvmanager, jsonmanager
 
 class DataGenerator:
     """
@@ -9,8 +9,10 @@ class DataGenerator:
     DataGenerator takes an optional argument for number of rows to generate when dealing with csv
     """
     def __init__(self, manager, **kwargs):
-        if kwargs['rows']:
+        if kwargs.get('rows'):
                 self.rows = kwargs['rows']
+        else:
+            self.rows = []
         if manager == 'csv':
             self.manager = csvmanager.CSVManager()
         elif manager == 'tsv':
