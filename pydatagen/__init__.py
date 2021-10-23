@@ -10,7 +10,7 @@ class DataGenerator:
     """
     def __init__(self, manager, **kwargs):
         if kwargs.get('rows'):
-                self.rows = kwargs['rows']
+            self.rows = kwargs['rows']
         else:
             self.rows = []
         if manager == 'csv':
