@@ -1,6 +1,5 @@
 import csv
 import logging
-import os
 
 class CSVManager:
     def __init__(self, headers=None, rows=None):

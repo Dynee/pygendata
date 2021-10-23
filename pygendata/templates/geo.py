@@ -23,8 +23,7 @@ class GeoTemplate:
             return False
         return True
     
-    def generate(self, rows):
-        for _ in range(rows):
-            coordinates = self.fake.local_latlng(country_code=self.region, coords_only=True)
-            self.values.append(coordinates)
-        self.values = list(map(lambda x: { 'Latitude': x[0], 'Longitude': x[1] }, self.values))
+    def generate(self, row):
+        latitude, longitude = self.fake.local_latlng(country_code=self.region, coords_only=True)
+        return { 'latitude': latitude, 'longitude': longitude }
+            
