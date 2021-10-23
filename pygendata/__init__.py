@@ -4,6 +4,8 @@ from tqdm import tqdm
 from pygendata.ddl import DDL
 from pygendata.managers import csvmanager, tsvmanager, jsonmanager
 
+from multiprocessing import Pool, cpu_count
+
 class DataGenerator:
     """
     DataGenerator takes a manager of type (csv, tsv, json ..ect)
@@ -31,9 +33,9 @@ class DataGenerator:
             ddl.get_columns()
             ddl.create_headers()
             self.manager.headers = ddl.headers
-            for i in tqdm(range(self.rows)):
-                ddl.create_row(i)
-            self.manager.rows = ddl.column_data
+            p = Pool(cpu_count())
+            results = p.map(ddl.create_row, tqdm(range(self.rows)))
+            self.manager.rows = list(results)
             self.manager.write(outfile)
         except IOError as e:
             logging.warn(str(e))

@@ -49,7 +49,7 @@ class DDL:
                     c[name] = datatypes[type_info]() # expensive
             else:
                 raise TypeNotSupportedError(f"{c['type']} is not currently supported")
-        self.column_data.append(c)
+        return c
     
     def process(self):
         self.get_columns()
