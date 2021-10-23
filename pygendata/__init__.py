@@ -1,7 +1,7 @@
 import logging
 
-from .ddl import DDL
-from .managers import csvmanager, tsvmanager, jsonmanager
+from pygendata.ddl import DDL
+from pygendata.managers import csvmanager, tsvmanager, jsonmanager
 
 class DataGenerator:
     """
