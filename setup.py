@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 setup(
     name = 'pygendata',
     packages = find_packages(include=['pygendata', 'pygendata.*']),
-    version = '0.1.0',
+    version = '1.0.0',
     license = 'MIT',
     description = 'data generation library supports multiple input/output file types',
     author = 'Lucas Padden',
