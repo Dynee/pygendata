@@ -45,3 +45,6 @@ def run():
         dg.ddl(f"{filepath}/{base_file_loc}", f"{filepath}/{file_dest}") # this will need to be fixed when its used outside of this env
     elif template and template == 'geo':
         dg.template('geo', region, f"{filepath}/{file_dest}")
+
+if __name__ == "__main__":
+    run()
