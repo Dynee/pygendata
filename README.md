@@ -18,6 +18,50 @@ python
 import pygendata
 ```
 
+# Templates
+`pygendata` has the concept of a template, a template should be just that, a template for you do generate data
+
+`pygendata` provides a `GeoTemplate` object that generates a list of `latitude/longitude` points
+
+```
+from faker import Faker
+
+class GeoTemplate:
+    """
+    A geo template generates Lat/Lon values particular to a specified region
+    """
+
+    # TODO: support more regions
+    _allowed_regions = {'US': True, 'GB': True}
+
+    def __init__(self, region):
+        self.fake = Faker()
+        if self.allowed_region(region):
+            self.region = region
+        else:
+            self.region = 'US' # defaults to US
+        self.keys = ['latitude', 'longitude']
+        self.values = []
+    
+    def allowed_region(self, region):
+        if region not in self._allowed_regions:
+            return False
+        return True
+    
+    def generate(self, row):
+        latitude, longitude = self.fake.local_latlng(country_code=self.region, coords_only=True)
+        return { 'latitude': latitude, 'longitude': longitude }
+```
+
+You can use the `pygendata` command to generate a JSON file with these values
+```
+pygendata --generate json --template geo US --to us_lat_lon.json --rows 1000000
+```
+
+An output file with 1000000 `lat/long` points should be created
+
+Every json file has the key `"rows": [....]`
+
 # Example Usage
 Generating data from a DDL file to a CSV
 

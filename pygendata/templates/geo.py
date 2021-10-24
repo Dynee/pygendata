@@ -1,6 +1,5 @@
 from faker import Faker
 
-
 class GeoTemplate:
     """
     A geo template generates Lat/Lon values particular to a specified region
