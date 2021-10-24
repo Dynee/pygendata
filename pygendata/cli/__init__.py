@@ -24,7 +24,7 @@ def run():
     base_file_type = None
     base_file_loc = None
     template = None
-    region = None
+    template_arg = None
     file_dest = args.to
     num_rows = args.rows
     filetype_to_generate = args.generate
