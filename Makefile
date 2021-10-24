@@ -1,5 +1,5 @@
 run:
-	python3 pygendata.py --generate csv --base ddl tests/users.txt --to tests/users.csv --rows 100
+	python3 pygendata/__init__.py --generate csv --base ddl tests/users.txt --to tests/users.csv --rows 100
 
 setup: requirements.txt
 	pip install -r requirements.txt
