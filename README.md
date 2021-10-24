@@ -22,4 +22,22 @@ python
 import pygendata
 ```
 
-# More Coming Soon...
+# Example Usage
+Generating data from a DDL file to a CSV
+
+1. Create a DDL File `users.txt`
+```
+create table users (
+id INTEGER,
+name TEXT ENCODING DICT(32),
+email TEXT ENCODING DICT(32),
+password TEXT ENCODING DICT(32)
+);
+```
+
+2. Run the pygendata command
+```
+pygdendata --generate csv --base ddl users.txt --to users.csv --rows 1000000
+```
+
+3. You should now have a users.csv file in your current working directory with 1million users
