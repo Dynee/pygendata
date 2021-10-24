@@ -36,6 +36,7 @@ class CSVManager:
             with open(file, 'w+') as csvfile:
                 writer = csv.DictWriter(csvfile, fieldnames=self.headers)
                 writer.writeheader()
+                print('Writing rows to csv file')
                 for row in tqdm(self.rows):
                     writer.writerow(row)
         except Exception as e:

@@ -44,6 +44,7 @@ class DataGenerator:
             ddl.create_headers()
             self.manager.headers = ddl.headers
             p = Pool(cpu_count())
+            print('Generating rows from ddl file')
             results = p.map(ddl.create_row, tqdm(range(self.rows)))
             self.manager.rows = list(results)
             self.manager.write(outfile)
@@ -62,6 +63,7 @@ class DataGenerator:
                 template = GeoTemplate(template_arg)
             p = Pool(cpu_count())
             self.manager.headers = template.keys
+            print('Generating rows from template')
             results = p.map(template.generate, tqdm(range(self.rows)))
             self.manager.rows = list(results)
             self.manager.write(outfile)

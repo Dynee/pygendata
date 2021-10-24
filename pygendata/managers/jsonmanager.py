@@ -38,6 +38,7 @@ class JSONManager:
             write_data = {"rows": []}
             with open(file, 'w+') as f:
                 # json will always write a key with an array as a value like so {"rows": [....]}
+                print('Writing rows to JSON file')
                 for row in tqdm(self.rows):
                     write_data['rows'].append(row)
                 f.write(json.dumps(write_data))
