@@ -15,7 +15,7 @@ class GeoTemplate:
             self.region = region
         else:
             self.region = 'US' # defaults to US
-        self.keys = ['Latitude', 'Longitude']
+        self.keys = ['latitude', 'longitude']
         self.values = []
     
     def allowed_region(self, region):

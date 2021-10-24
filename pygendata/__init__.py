@@ -58,6 +58,7 @@ class DataGenerator:
             if template_type == 'geo':
                 template = GeoTemplate(region)
             p = Pool(cpu_count())
+            self.manager.headers = template.keys
             results = p.map(template.generate, tqdm(range(self.rows)))
             self.manager.rows = list(results)
             self.manager.write(outfile)
