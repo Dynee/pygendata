@@ -9,11 +9,7 @@ To install pygendata you can use your favorite python package installer
 pip install pygendata
 ```
 
-Once you install the package you will want to modify your `.bash_profile` ,`.zshrc` or `.bashrc` file and set an alias to pygendata
-
-```
-alias pygendata="<Path/to/install/location>"
-```
+The `pygendata` command automatically gets added to your path when you do pip install
 
 To test if the installation worked correctly you can use the python repl and try importing the package
 ```
