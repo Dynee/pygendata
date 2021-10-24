@@ -38,8 +38,7 @@ def run():
     if args.template:
         template, region = args.template
     
-    filepath = os.path.dirname(__file__)
-    filepath = os.path.dirname(os.path.dirname(filepath))
+    filepath = os.getcwd()
     
     if base_file_type == 'ddl':
         dg.ddl(f"{filepath}/{base_file_loc}", f"{filepath}/{file_dest}") # this will need to be fixed when its used outside of this env
