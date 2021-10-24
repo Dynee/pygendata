@@ -50,7 +50,3 @@ class DDL:
             else:
                 raise TypeNotSupportedError(f"{c['type']} is not currently supported")
         return c
-    
-    def process(self):
-        self.get_columns()
-        self.get_column_types()
