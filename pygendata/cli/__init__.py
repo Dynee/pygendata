@@ -29,10 +29,7 @@ def run():
     num_rows = args.rows
     filetype_to_generate = args.generate
     
-    if filetype_to_generate == 'csv':
-        dg = DataGenerator(filetype_to_generate, rows=num_rows)
-    elif filetype_to_generate == 'json':
-        dg = DataGenerator(filetype_to_generate, rows=num_rows)
+    dg = DataGenerator(filetype_to_generate, rows=num_rows)
     if args.base:
         base_file_type, base_file_loc = args.base
     if args.template:

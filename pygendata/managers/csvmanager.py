@@ -1,5 +1,6 @@
 import csv
 import logging
+from tqdm import tqdm
 
 class CSVManager:
     def __init__(self, headers=None, rows=None):
@@ -35,7 +36,7 @@ class CSVManager:
             with open(file, 'w+') as csvfile:
                 writer = csv.DictWriter(csvfile, fieldnames=self.headers)
                 writer.writeheader()
-                for row in self.rows:
+                for row in tqdm(self.rows):
                     writer.writerow(row)
         except Exception as e:
             logging.warn(str(e))

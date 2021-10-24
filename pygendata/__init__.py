@@ -7,6 +7,7 @@ from pygendata.templates.geo import GeoTemplate
 
 from multiprocessing import Pool, cpu_count
 
+# TODO: support reading from json, tsv
 class DataGenerator:
     """
     DataGenerator takes a manager of type (csv, tsv, json ..ect)
@@ -48,7 +49,9 @@ class DataGenerator:
             self.manager.write(outfile)
         except IOError as e:
             logging.warn(str(e))
-        
+    
+    # TODO: template for high cardinality data (cardinality column name for cli)
+    # TODO: make geo data realistic? see what kind of geo data would want to be generated
     def template(self, template_type, region, outfile):
         """
         Generates data using a template file, eventually this should support custom templates, currently only supports geo
