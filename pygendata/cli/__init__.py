@@ -33,14 +33,14 @@ def run():
     if args.base:
         base_file_type, base_file_loc = args.base
     if args.template:
-        template, region = args.template
+        template, template_arg = args.template
     
     filepath = os.getcwd()
     
     if base_file_type == 'ddl':
         dg.ddl(f"{filepath}/{base_file_loc}", f"{filepath}/{file_dest}") # this will need to be fixed when its used outside of this env
     elif template and template == 'geo':
-        dg.template('geo', region, f"{filepath}/{file_dest}")
+        dg.template('geo', template_arg, f"{filepath}/{file_dest}")
 
 if __name__ == "__main__":
     run()

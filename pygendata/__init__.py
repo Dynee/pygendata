@@ -52,14 +52,14 @@ class DataGenerator:
     
     # TODO: template for high cardinality data (cardinality column name for cli)
     # TODO: make geo data realistic? see what kind of geo data would want to be generated
-    def template(self, template_type, region, outfile):
+    def template(self, template_type, template_arg, outfile):
         """
         Generates data using a template file, eventually this should support custom templates, currently only supports geo
         """
         template = None
         try:
             if template_type == 'geo':
-                template = GeoTemplate(region)
+                template = GeoTemplate(template_arg)
             p = Pool(cpu_count())
             self.manager.headers = template.keys
             results = p.map(template.generate, tqdm(range(self.rows)))
