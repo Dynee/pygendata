@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 setup(
     name = 'pygendata',
     packages = find_packages(include=['pygendata', 'pygendata.*']),
-    version = '1.0.2',
+    version = '1.0.3',
     license = 'MIT',
     description = 'data generation library supports multiple input/output file types',
     author = 'Lucas Padden',
@@ -21,5 +21,8 @@ setup(
         'License :: OSI Approved :: MIT License',
         'Programming Language :: Python :: 3.7',
         'Programming Language :: Python :: 3.8'
-    ]
+    ],
+    entry_points={
+        'console_scripts': ['pygendata=pygendata.cli:main']
+    }
 )
