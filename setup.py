@@ -9,7 +9,7 @@ setup(
     author = 'Lucas Padden',
     author_email='lucaspadden@gmail.com',
     url = 'https://github.com/Dynee/pygendata',
-    download_url = 'https://github.com/Dynee/pygendata/archive/refs/tags/v0.0.1.tar.gz',
+    download_url = 'https://github.com/Dynee/pygendata/archive/refs/tags/v1.0.4.tar.gz',
     keywords=['python', 'data generation'],
     install_requires=[
         'faker'
