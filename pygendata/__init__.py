@@ -4,7 +4,6 @@ from tqdm import tqdm
 from pygendata.ddl import DDL
 from pygendata.managers import csvmanager, tsvmanager, jsonmanager
 from pygendata.templates.geo import GeoTemplate
-from pygendata.cli import run
 from multiprocessing import Pool, cpu_count
 
 # TODO: support reading from json, tsv
@@ -71,5 +70,3 @@ class DataGenerator:
             logging.warn(str(e))
 
 
-if __name__ == "__main__":
-    run()
