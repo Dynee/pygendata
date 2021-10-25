@@ -2,7 +2,7 @@ import logging
 
 from tqdm import tqdm
 from pygendata.ddl import DDL
-from pygendata.managers import csvmanager, tsvmanager, jsonmanager
+from pygendata.managers import manager_factory
 from pygendata.templates.geo import GeoTemplate
 from multiprocessing import Pool, cpu_count
 
@@ -17,14 +17,7 @@ class DataGenerator:
             self.rows = kwargs['rows']
         else:
             self.rows = []
-        if manager == 'csv':
-            self.manager = csvmanager.CSVManager()
-        elif manager == 'tsv':
-            self.manager = tsvmanager.TSVManager()
-        elif manager == 'json':
-            self.manager = jsonmanager.JSONManager()
-        else:
-            self.manager = csvmanager.CSVManager()
+        self.manager = manager_factory(manager)
     
     @property
     def manager(self):

@@ -1,14 +1,17 @@
 import pytest
 
-from pygendata.managers import csvmanager
+from pygendata.managers import manager_factory
 
 @pytest.fixture
 def csv_manager_no_headers_no_rows():
-    return csvmanager.CSVManager()
+    return manager_factory('csv')
 
 @pytest.fixture
 def csv_manager_headers_rows():
-    return csvmanager.CSVManager(headers=['header1', 'header2'], rows=[{'header1': 'value1', 'header2': 'value2'}])
+    csv_manager = manager_factory('csv')
+    csv_manager.headers = ['header1', 'header2']
+    csv_manager.rows = [{'header1': 'value1', 'header2': 'value2'}]
+    return csv_manager
 
 def test_defaults_csv_manager_has_no_headers_and_rows(csv_manager_no_headers_no_rows):
     assert csv_manager_no_headers_no_rows.headers == None
