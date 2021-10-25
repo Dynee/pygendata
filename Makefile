@@ -7,6 +7,7 @@ setup: requirements.txt
 clean:
 	rm -rf pygendata/__pycache__
 	rm -rf dist/*
+	rm tests/output.csv tests/users.csv tests/united_states_points.csv tests/united_states_points.json
 
 test:
 	pytest
