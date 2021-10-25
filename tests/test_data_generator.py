@@ -1,5 +1,35 @@
-from pygendata import DataGenerator
+import pytest
 
-def test_not_passing_in_rows_results_in_no_rows():
-    dg = DataGenerator('csv')
-    assert len(dg.rows) == 0
+from pygendata import DataGenerator
+from pygendata.managers import csvmanager, jsonmanager, tsvmanager
+
+@pytest.fixture
+def default_data_generator():
+    return DataGenerator()
+
+@pytest.fixture
+def csv_data_generator():
+    return DataGenerator('csv')
+
+@pytest.fixture
+def json_data_generator():
+    return DataGenerator('json')
+
+@pytest.fixture
+def tsv_data_generator():
+    return DataGenerator('tsv')
+
+def test_not_passing_in_rows_results_in_no_rows(default_data_generator):
+    assert default_data_generator.rows == []
+
+def test_not_passing_in_manager_defaults_to_csv(default_data_generator):
+    assert default_data_generator.manager == csvmanager.CSVManager()
+
+def test_passing_in_json_sets_manager_as_jsonmanager(json_data_generator):
+    assert json_data_generator.manager == jsonmanager.JSONManager()
+
+def test_passing_in_tsv_sets_manager_as_tsvmanager(tsv_data_generator):
+    assert tsv_data_generator.manager == tsvmanager.TSVManager()
+
+def test_passing_in_csv_sets_manager_as_csvmanager(csv_data_generator):
+    assert csv_data_generator.manager == csvmanager.CSVManager()

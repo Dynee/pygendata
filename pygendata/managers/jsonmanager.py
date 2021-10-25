@@ -44,4 +44,8 @@ class JSONManager:
                 f.write(json.dumps(write_data))
         except IOError as e:
             logging.warning(str(e))
-        
+    
+    def __eq__(self, other):
+        if not isinstance(other, JSONManager):
+            return NotImplemented
+        return self.headers == other.headers and self.rows == other.rows

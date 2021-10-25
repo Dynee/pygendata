@@ -12,7 +12,7 @@ class DataGenerator:
     DataGenerator takes a manager of type (csv, tsv, json ..ect)
     DataGenerator takes an optional argument for number of rows to generate when dealing with csv
     """
-    def __init__(self, manager, **kwargs):
+    def __init__(self, manager=None, **kwargs):
         if kwargs.get('rows'):
             self.rows = kwargs['rows']
         else:
@@ -23,6 +23,8 @@ class DataGenerator:
             self.manager = tsvmanager.TSVManager()
         elif manager == 'json':
             self.manager = jsonmanager.JSONManager()
+        else:
+            self.manager = csvmanager.CSVManager()
     
     @property
     def manager(self):
