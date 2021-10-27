@@ -1,7 +1,9 @@
 import logging
-
+import json
+from json import JSONDecodeError
 from tqdm import tqdm
 from pygendata.ddl import DDL
+from pygendata.pygenjson import JSON
 from pygendata.managers import manager_factory
 from pygendata.templates.geo import GeoTemplate
 from multiprocessing import Pool, cpu_count
@@ -64,4 +66,16 @@ class DataGenerator:
         except IOError as e:
             logging.warn(str(e))
 
-
+    def json(self, infile, outfile):
+        try:
+            json_str = self.manager.read(infile)
+            json_data = json.loads(json_str)
+            j = JSON()
+            j.get_headers(json_data)
+            self.manager.headers = j.headers
+            p = Pool(cpu_count())
+            results = p.map(j.create_row, tqdm(range(self.rows)))
+            self.manager.rows = list(results)
+            self.manager.write(outfile)
+        except (IOError, JSONDecodeError) as e:
+            logging.warning(str(e))

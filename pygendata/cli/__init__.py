@@ -39,6 +39,8 @@ def run():
     
     if base_file_type == 'ddl':
         dg.ddl(f"{filepath}/{base_file_loc}", f"{filepath}/{file_dest}") # this will need to be fixed when its used outside of this env
+    elif base_file_type == 'json':
+        dg.json(f"{filepath}/{base_file_loc}", f"{filepath}/{file_dest}")
     elif template and template == 'geo':
         dg.template('geo', template_arg, f"{filepath}/{file_dest}")
 

@@ -1,0 +1,8 @@
+{
+    "users": {
+        "id": "INTEGER",
+        "name": "TEXTENCODINGDICT(32)",
+        "email": "EMAIL",
+        "password": "TEXTENCODINGDICT(32)"
+    }
+}
