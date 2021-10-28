@@ -1,11 +1,11 @@
 EdmKey,PortKeym,LocKey
 /
 CREATE TABLE PortLoc (
-    EdmKey INTEGER,
-    PortKey INTEGER,
+    EdmKey AUTOINCREMENT,
+    PortKey AUTOINCREMENT,
     PortNum TEXT ENCODING DICT(32),
     PortName TEXT ENCODING DICT(32),
-    LocKey INTEGER
+    LocKey AUTOINCREMENT
 );
 /
 CREATE TABLE Program_EDM (

@@ -1,3 +1,4 @@
+from pygendata.exceptions import TypeNotSupportedError
 from pygendata.managers import CSVManager
 import logging
 import os
@@ -26,12 +27,15 @@ class JoinTemplate:
     
     # TODO: Auto increment rows, make sure data is synchronized between joined tables
     def scaffold(self, rows):
-        t1_rows = []
-        if self.tables:
-            first = self.tables[0]
-            for i in range(rows):
-                t1_rows.append(first.create_row(i))
-        print(t1_rows)
+        try:
+            t1_rows = []
+            if self.tables:
+                first = self.tables[0]
+                for i in range(rows):
+                    t1_rows.append(first.create_row(i))
+            print(t1_rows)
+        except TypeNotSupportedError as t:
+            print(str(t))
 
 jt = JoinTemplate()
 filepath = os.getcwd()
