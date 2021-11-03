@@ -5,3 +5,4 @@ pygendata/templates/__pycache__
 pygendata/cli/__pycache__
 dist/*
 pygendata.egg-info
+tests/private/

@@ -40,4 +40,5 @@ datatypes = {
 special_types = {
     'EMAIL': fake.email,
     'NAME': fake.name,
+    'AUTOINCREMENT': 0
 }

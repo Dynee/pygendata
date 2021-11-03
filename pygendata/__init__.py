@@ -6,7 +6,9 @@ from pygendata.ddl import DDL
 from pygendata.pygenjson import JSON
 from pygendata.managers import manager_factory
 from pygendata.templates.geo import GeoTemplate
+from pygendata.templates.join import JoinTemplate
 from multiprocessing import Pool, cpu_count
+from pygendata.utility import generate_reusable_rows_for_column
 
 # TODO: support reading from json, tsv
 class DataGenerator:
@@ -39,6 +41,7 @@ class DataGenerator:
             ddl.get_columns()
             ddl.create_headers()
             self.manager.headers = ddl.headers
+            print(self.manager.headers)
             p = Pool(cpu_count())
             print('Generating rows from ddl file')
             results = p.map(ddl.create_row, tqdm(range(self.rows)))
@@ -79,3 +82,24 @@ class DataGenerator:
             self.manager.write(outfile)
         except (IOError, JSONDecodeError) as e:
             logging.warning(str(e))
+    
+    def join(self, infile, outfile):
+        try:
+            jt = JoinTemplate()
+            jt.parse(infile)
+            tables = jt.scaffold(self.manager.rows)
+            for table in tables:
+                self.manager.rows = table[1]
+                self.manager.headers = table[0].headers
+                self.manager.write(outfile)
+        except IOError as e:
+            logging.warning(str(e))
+    
+    def cardinality(self, infile, outfile, column_list, cardinality):
+        columns = column_list.split(',')
+        reusable_rows = []
+        for column in columns:
+            col_name, col_type = column.split(':')
+            reusable_rows.append(generate_reusable_rows_for_column(col_name, col_type, cardinality))
+        print(reusable_rows)
+

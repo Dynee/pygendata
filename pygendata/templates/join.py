@@ -29,15 +29,30 @@ class JoinTemplate:
     def scaffold(self, rows):
         try:
             t1_rows = []
+            t2_rows = []
+            t3_rows = []
             if self.tables:
                 first = self.tables[0]
+                second = self.tables[1]
+                third = self.tables[2]
                 for i in range(rows):
-                    t1_rows.append(first.create_row(i))
-            print(t1_rows)
+                    row = first.create_row(i)
+                    t1_rows.append(row)
+                for j in range(rows):
+                    row = second.create_row_from_table_rows(t1_rows, j)
+                    t2_rows.append(row)
+                for k in range(rows):
+                    row = third.create_row_from_table_rows(t1_rows, k)
+                    t3_rows.append(row)
+                # print('Table 1:')
+                # for l in range(rows):
+                #     print(t1_rows[l])
+                # print('Table 2:')
+                # for m in range(rows):
+                #     print(t2_rows[m])
+                # print('Table 3:')
+                # for n in range(rows):
+                #     print(t3_rows[n])
+            return [(first, t1_rows), (second, t2_rows), (third, t3_rows)]
         except TypeNotSupportedError as t:
             print(str(t))
-
-jt = JoinTemplate()
-filepath = os.getcwd()
-jt.parse(f"{filepath}/aog.sql")
-jt.scaffold(10)
